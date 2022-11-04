@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><link href="/Content/css?v=5SsskdAh3ChL4quPJSdTqyWDt4Uye5HAhSRdbwb5Vwg1" rel="stylesheet"/>
+<link href="../fonts/css/font-awesome.min.css" rel="stylesheet" /><link href="../Content/font-face.css" rel="stylesheet" /><link href="../Content/bootstrap.min.css" rel="stylesheet" /><link href="../Content/common.css" rel="stylesheet" /><link href="../bundles/customcss" rel="stylesheet" /><link href="../fonts/css/font-awesome.min.css" rel="stylesheet" /><link href="../fonts/css/Bootstrap-select-v1.13.14.css" rel="stylesheet" /><link href="../Content/toastr.min.css" rel="stylesheet" />
+    <style>
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        * {
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+
+        body {
+            background: #fafafa;
+            padding: 0;
+        }
+
+        nav-bar {
+            position: fixed;
+            width: 100%
+        }
+
+        #sidebar a,
+        #sidebar a:hover,
+        #sidebar a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        /* Side Bar*/
+
+
+
+        #sidebar.sb-active {
+            margin-left: -300px;
+        }
+
+        .wrapper {
+            display: flex;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+
+        input, select {
+            font-size: inherit !important;
+            /*height: 33.5px !important;*/
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 0.8em;
+        }
+
+        .tbl-data {
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+            .tbl-data th {
+                font-weight: bold;
+                background-color: #F2994A !important;
+                color: white;
+            }
+
+            .tbl-data input[type=checkbox] {
+                width: 20px;
+            }
+
+        .tbl-detail tr td {
+            padding: 4px 5px 4px 5px;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+        .tbl-checkbox label {
+            position: relative;
+            top: -11px;
+            left: 2px;
+        }
+
+        .max-with-fit {
+            max-width: fit-content;
+        }
+
+        textarea {
+            font-size: inherit !important;
+        }
+
+        #sidebar {
+            min-width: 300px;
+            max-width: 300px;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #fff;
+            transition: all 0.3s;
+            overflow-y: scroll;
+            height: 800px;
+            border-radius: 5px;
+            background-color: #F2994A;
+        }
+
+            #sidebar::-webkit-scrollbar {
+                width: 0;
+            }
+
+            #sidebar p {
+                padding: 15px;
+                background: #F2994A;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+            }
+
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1em;
+                display: block;
+                background-color: #f4a158;
+            }
+
+                #sidebar ul li a:hover {
+                    background: #d06e17;
+                }
+
+            #sidebar ul li.sb-active > a,
+            a[aria-expanded="true"] {
+                color: #fff;
+            }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        #navbarSupportedContent .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: -15%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 7%;
+            transform: translateY(-50%);
+        }
+
+        #sidebar ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #d29a68;
+        }
+
+        #content {
+            height: calc(100vh - 97px);
+            width: 100%;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #ui-datepicker-div {
+            width: fit-content;
+        }
+
+        .menu-btn {
+            border: none;
+            background-color: #F2994A;
+        }
+
+            .menu-btn:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+        .btn-green:hover {
+            background-color: #009900;
+        }
+
+        .btn-success {
+            width: 70px;
+            height: 40px;
+            font-weight: bold;
+        }
+
+        #btn-home {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+
+            #btn-home:hover {
+                color: white;
+            }
+
+            #btn-home span {
+                position: relative;
+                top: 2px;
+                font-size: 15px;
+            }
+
+            #btn-home i {
+                position: relative;
+                top: 2px;
+            }
+
+        .btn-light {
+            border: 1px solid #d9cfcf;
+        }
+
+        #showModelNeed {
+            height: 33.5px;
+        }
+    </style>
+<title>
+	FPT University Learning Materials
+</title></head>
+
+<body>
+    <form method="post" action="./Home" id="form2">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="97NqlXC9c0yDEWzOOK0iAViCaMREejOhAXXPsW0dyQhw/n5UB635tUtTL1HI6bc9qK1ZUFNVUBJvdQiBrwg1n1zaYc2+VPAC+gqCiHgiszi1sej3U7IL70LPGBYGXem2qxGItwdFUI0ZRWCpOJwakCMQhuFIDUnkaCNOgq1d2Q9gP1XkVu24/7Kv8aIv/qq4qxhWMzt1OxKEl3i9DbO4tr99WJK1D+82mQdo68sz5I2bQX5s1Bt4zCsrJOTkDFJ61K0+7W+05NEXAnhyfMmK0bi6Gki3fftreFRYzS+RTHeW6MIDnBLwxLx77YrFPlHjbhdY2FwJtSOrYr2yxLTmQcaI7BeBoJXXeZeIdVfnnMHpDs1NgVfgg0LXgLRKMT4QnaDaI/P0o0CZnMm+F/dqOKEJFK55nXd5MXaHxabXY/8YZo3d8a9sI5O8tkdbPK9LA1thZs+R3KCVZlX92IhRbg9GeE/V9H7Op/4Vaj3/n6w4b016eUJzSDRoiwWaqJUHPc2Y4DbUnF3g/v8BYSjxqzmnIgtgdMz3vu28UYFbKiTiYUt3DWKbK/gqpsiigzJ0I0+leaFEX07674GCnn8ah3sOmV4jqw50tYsZrKILI56YeD6ben0YxVc0QvoSmPzh" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form2'];
+if (!theForm) {
+    theForm = document.form2;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZMrpL97guh2x_lfUiu-1_hlzlbl--S7Vc8swdj3bZMABH4j1Fn0pmI18V554x5p3Bw2&amp;t=637814905746327080" type="text/javascript"></script>
+
+
+<script src="../Scripts/WebForms/MsAjax/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="../Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+<script src="../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../Scripts/popper.js" type="text/javascript"></script>
+<script src="../Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../Scripts/Bootstrap-select-v1.13.14.js" type="text/javascript"></script>
+<script src="../Scripts/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../Scripts/custom.js" type="text/javascript"></script>
+<script src="../Scripts/toastr.min.js" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="4C08216D" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="C59CIq3gBZ4FvINZttdjLjcYPPAR0yVEXldQcBzT1SsLjRFJ8MWFYyFtgouL5k8xX51rXJTEKCe6SCF63OoOscOjAwPKknz53mHZwNubvPjPW/Krrua4fd80VCr6Uodq" />
+</div>
+        <nav class="navbar navbar-expand-lg px-0 pb-2 m-0" style="background-color: #F2994A; color: white;">
+            <div class="container-fluid p-0">
+                
+                
+                <a id="btn-home" class="btn btn-lg ml-3" href="/gui/Home.aspx">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                    <span style="font-weight: bold;">Home</span>
+                </a>
+                
+                <h1 class="text-center" style="position: absolute; left: 35%">FPT University Learning Materials</h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-right-style" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item sb-active">
+                            <span class="sr-only">(current)</span>
+                        </li>
+                    </ul>
+                    <select id="language" style="z-index: 1; width: 130px" class="form-control">
+                        <option value="en">English</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                    <div class="mt-2">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img id="ProfileImage" class="rounded-circle" src="https://lh3.googleusercontent.com/a/ALm5wu2_gVuxn8OT6V0_WSnENgJt2EsvfGCQtFVx3F9o=s96-c" style="height:50px;width:50px;" />
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div id="pnlProfile">
+	
+                                            <span class="dropdown-item">Name:
+                                                <span id="lblName" style="font-weight:bold;">Nguyen Trung Hieu (K16_HL)</span>
+                                            </span>
+                                            <span class="dropdown-item">
+                                                <div id="pnlEmail">
+		
+                                                    Email:
+                                                        <span id="lblEmail" style="font-weight:bold;">hieunthe160326@fpt.edu.vn</span>
+                                                
+	</div>
+                                            </span>
+                                            <span class="dropdown-item">User's role:
+                                                   <span id="lblRole" style="font-weight:bold;">Student</span>
+                                            </span>
+                                            <span class="dropdown-item">Education level:
+                                                <span id="lblEduLevel" style="font-weight:bold;">FU</span>
+                                            </span>
+                                            <div class="dropdown-item ">
+                                                <a id="lbtnSignOut" href="javascript:__doPostBack(&#39;ctl00$lbtnSignOut&#39;,&#39;&#39;)" style="display:inline-block;width:100%;">Sign out FLM</a>
+                                            </div>
+                                        
+</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="wrapper">
+            
+            <div id="content" class="p-4">
+
+                <div class="mx-3 ">
+                    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'form2', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+                    
+    <style type="text/css">
+        .home-layout {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .a-button {
+            padding: 10px;
+            height: auto;
+            width: 100%;
+            background: rgba(242, 153, 74, 0.1);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease-in-out;
+        }
+
+            .a-button:hover {
+                background: rgba(242, 153, 74, 0.4);
+                box-shadow: 0px 0px 0px 1px #F2994A;
+                border-radius: 8px;
+                text-decoration: none;
+            }
+
+
+
+        .card {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            border: none;
+        }
+
+        .card-header {
+            color: #08c;
+            background: none;
+            border-bottom: 1px solid #f6f6f6;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 35px;
+        }
+
+        .margin-bot-10 {
+            margin-bottom: 10px;
+        }
+
+        .fixed-position-button {
+            background-color: #08c;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+        }
+    </style>
+    <div class="home-layout">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div id="panelStudentFeatures" class="mb-4">
+	
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <h3 class="card-header font-weight-bold">Student's feature</h3>
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a class="a-button" href="role/student/ListCurriculum.aspx">View Curriculum</a>
+                                            <a class="a-button" href="role/student/SyllabusManagement.aspx">View Syllabus</a>
+                                            <a class="a-button" href="tool/AllPrequisiteSubject.aspx">Show Learning Path of a Subject</a>
+                                            <a class="a-button" href="tool/AllCorollarySubject.aspx">A subject is the pre-requisite of</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+</div>
+        
+
+    </div>
+    <hr />
+    </asp:Panel>
+    
+    </div>
+    <hr />
+    <script>
+        $('.dropdown-menu').click(function (e) {
+            e.stopPropagation();
+        });
+    </script>
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('sb-active');
+            });
+            var lang = 'en';
+            $('#language').val(lang);
+            $('#language').change(function () {
+                $.ajax({
+
+                    url: '/Language', // comma here instead of semicolon  
+                    data: { language: $(this).val() },
+                    success: function () {
+                        window.location.reload();
+                    }
+
+                });
+            })
+
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            if (window.localStorage.getItem('typeToast') == 1) {
+                toastr.success(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+            if (window.localStorage.getItem('typeToast') == 2) {
+                toastr.error(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+        });
+        function showToastRedirectPage(type, mess) {
+            window.localStorage.setItem('typeToast', type);
+            window.localStorage.setItem('messToast', mess);
+        }
+    </script>
+</body>
+
+</html>
